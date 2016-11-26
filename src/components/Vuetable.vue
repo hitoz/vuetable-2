@@ -94,6 +94,10 @@ export default {
       type: Array,
       required: true
     },
+    columns:  {
+      type: Array,
+      required: true
+    },
     loadOnStart: {
       type: Boolean,
       default: true
@@ -213,21 +217,21 @@ export default {
       return this.detailRowComponent !== ''
     },
     countVisibleFields: function() {
-      return this.fields.filter(function(field) {
+      return this.columns.filter(function(field) {
         return field.visible
       }).length
     }
   },
   methods: {
     normalizeFields: function() {
-      if (typeof(this.fields) === 'undefined') {
+      if (typeof(this.columns) === 'undefined') {
         this.warn('You need to provide "fields" prop.')
         return
       }
 
       var self = this
       var obj
-      this.fields.forEach(function(field, i) {
+      this.columns.forEach(function(field, i) {
         if (typeof (field) === 'string') {
           obj = {
             name: field,
