@@ -92,7 +92,7 @@ export default {
   props: {
     fields: {
       type: Array,
-      required: true
+      required: false
     },
     columns:  {
       type: Array,
